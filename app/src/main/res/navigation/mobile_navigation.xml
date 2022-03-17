@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_traverse">
+
+    <fragment
+        android:id="@+id/navigation_traverse"
+        android:name="com.johair.tabcalculator.ui.Traverse.TraverseFragment"
+        android:label="@string/title_traverse"
+        tools:layout="@layout/fragment_traverse" />
+
+    <fragment
+        android:id="@+id/navigation_psychometric"
+        android:name="com.johair.tabcalculator.ui.Psychometric.PsychometricFragment"
+        android:label="@string/title_psychometric"
+        tools:layout="@layout/fragment_psychometric" />
+
+    <fragment
+        android:id="@+id/navigation_affinity_laws"
+        android:name="com.johair.tabcalculator.ui.AffinityLaws.AffinityLawsFragment"
+        android:label="@string/title_affinity_laws"
+        tools:layout="@layout/fragment_affinity_laws" />
+</navigation>

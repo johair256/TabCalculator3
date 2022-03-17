@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Tab Calculator</string>
+    <string name="title_traverse">Traverse</string>
+    <string name="title_psychometric">Psychometric</string>
+    <string name="title_affinity_laws">Affinity Laws</string>
+</resources>
