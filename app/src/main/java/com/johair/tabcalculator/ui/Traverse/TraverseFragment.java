@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment;
 
 import com.johair.tabcalculator.Util;
 import com.johair.tabcalculator.databinding.FragmentTraverseBinding;
-import com.johair.tabcalculator.rectTrav;
 
 import java.text.DecimalFormat;
 
@@ -49,7 +48,7 @@ public class TraverseFragment extends Fragment {
     }
 
     double measurement;
-    int[] displayArray;
+    String[] displayArray;
 
     private static final DecimalFormat df3 = new DecimalFormat("#.###");
 
@@ -81,10 +80,10 @@ public class TraverseFragment extends Fragment {
                 displayArray = rectTrav.rectTravPoints(measurement);
                 break;
             case 1:
-                displayArray = rectTrav.rectTravPoints(measurement + 10);
+                displayArray = roundTrav.roundTravPoints(measurement);
                 break;
             case 2:
-                displayArray = rectTrav.rectTravPoints(measurement + 20);
+                displayArray = logTrav.logTravPoints(measurement);
                 break;
         }
 
@@ -95,7 +94,7 @@ public class TraverseFragment extends Fragment {
         if (measurement > 0) {   // Prevents function from outputting zeros
             for (int i = 0;i <= displayArray.length - 1;i++) {
                 TextView measurementView = new TextView(getActivity());
-                measurementView.setText(df3.format(displayArray[i]));
+                measurementView.setText(displayArray[i]);
                 measurementView.setLayoutParams(new LinearLayout.LayoutParams(100, 60));
                 measurementView.setGravity(Gravity.CENTER);
                 printLayout.addView(measurementView);
