@@ -48,9 +48,9 @@ public class TraverseFragment extends Fragment {
     }
 
     double measurement;
-    String[] displayArray;
+    double[] displayArray;
 
-    private static final DecimalFormat df3 = new DecimalFormat("#.###");
+    private static final DecimalFormat df3 = new DecimalFormat("###.###");
 
     // Retrieve user input data
     EditText inputMeasurement;
@@ -94,8 +94,8 @@ public class TraverseFragment extends Fragment {
         if (measurement > 0) {   // Prevents function from outputting zeros
             for (int i = 0;i <= displayArray.length - 1;i++) {
                 TextView measurementView = new TextView(getActivity());
-                measurementView.setText(displayArray[i]);
-                measurementView.setLayoutParams(new LinearLayout.LayoutParams(100, 60));
+                measurementView.setText(df3.format(displayArray[i]));
+                measurementView.setLayoutParams(new LinearLayout.LayoutParams(200, 60));
                 measurementView.setGravity(Gravity.CENTER);
                 printLayout.addView(measurementView);
                 printLayout.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER);

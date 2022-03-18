@@ -7,7 +7,7 @@ public class rectTrav {
     public static int lengthValue;
     private static final DecimalFormat df3 = new DecimalFormat("#.###");
 
-    public static String[] rectTravPoints(double ductSize) {
+    public static double[] rectTravPoints(double ductSize) {
         if (0 <= ductSize && ductSize <= 4) {
             lengthValue = 2;
         } else if (5 <= ductSize && ductSize <= 15) {
@@ -28,10 +28,10 @@ public class rectTrav {
             lengthValue = 10;
         }
 
-        String[] rectArray = new String[lengthValue];
+        double[] rectArray = new double[lengthValue];
 
         for (int i = 0;i <= lengthValue - 1;i++) {
-            rectArray[i] = df3.format(((ductSize / lengthValue) * i + (ductSize / lengthValue / 2)));
+            rectArray[i] = ((ductSize / lengthValue) * i + (ductSize / lengthValue / 2));
         }
 
         return rectArray;
