@@ -29,9 +29,9 @@ public class TraverseFragment extends Fragment {
 
         binding = FragmentTraverseBinding.inflate(inflater, container, false);
 
-        binding.calcButton.setOnClickListener(view -> Calculate());
+        binding.calcButton.setOnClickListener(view -> calcTraversePoints());
 
-        binding.clearButton.setOnClickListener(view -> Reset());
+        binding.clearButton.setOnClickListener(view -> resetTraverse());
 
         Spinner traverseMethod = binding.methodSpinner;
         ArrayAdapter<String> ad = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, traverseMethodOptions);
@@ -57,7 +57,7 @@ public class TraverseFragment extends Fragment {
     LinearLayout printLayout;
     Spinner methodSpinner;
 
-    public void Calculate() {
+    public void calcTraversePoints() {
         //Close Keyboard
         if (getActivity() != null) {
             Util.hideKeyboard(getActivity());
@@ -103,7 +103,7 @@ public class TraverseFragment extends Fragment {
         }
     }
 
-    public void Reset() {
+    public void resetTraverse() {
         if (inputMeasurement != null) {
             //Close Keyboard
             if (getActivity() != null) {

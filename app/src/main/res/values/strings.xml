@@ -3,4 +3,10 @@
     <string name="title_traverse">Traverse</string>
     <string name="title_psychometric">Psychometric</string>
     <string name="title_affinity_laws">Affinity Laws</string>
+    <string name="title_Calculate">Calculate</string>
+    <string name="title_Clear">Clear</string>
+    <string name="hint_altitude">Altitude</string>
+    <string name="hint_dry_bulb">Dry Bulb</string>
+    <string name="hint_wet_bulb">Wet Bulb</string>
+    <string name="hint_duct_size">Duct Size</string>
 </resources>

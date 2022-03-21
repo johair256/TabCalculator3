@@ -11,7 +11,7 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginTop="150dp"
-        android:text="Calculate"
+        android:text="@string/title_Calculate"
         app:layout_constraintEnd_toStartOf="@+id/clearButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginTop="150dp"
-        android:text="Clear"
+        android:text="@string/title_Clear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/calcButton"
@@ -34,11 +34,13 @@
         android:layout_height="50dp"
         android:layout_marginTop="75dp"
         android:ems="10"
+        android:hint="@string/hint_duct_size"
         android:inputType="number"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
     <LinearLayout
         android:id="@+id/printLayout"
@@ -62,4 +64,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
