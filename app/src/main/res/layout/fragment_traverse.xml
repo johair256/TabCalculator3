@@ -35,21 +35,21 @@
         android:layout_marginTop="75dp"
         android:ems="10"
         android:hint="@string/hint_duct_size"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:importantForAutofill="no" />
 
-    <LinearLayout
+    <TableLayout
         android:id="@+id/printLayout"
         android:layout_width="478dp"
         android:layout_height="500dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="200dp"
         android:layout_marginEnd="1dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,6 +60,7 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="225dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

@@ -3,10 +3,10 @@
     <color name="blue_500">#2196f3</color>
     <color name="blue_light_500">#6ec6ff</color>
     <color name="blue_dark_500">#0069c0</color>
-    <color name="blue_grey_600">#546e7a</color>
-    <color name="blue_grey_light_600">#819ca9</color>
-    <color name="blue_grey_dark_600">#29434e</color>
-    <color name="dark_grey">#FF424242</color>
+    <color name="grey_500">#9e9e9e</color>
+    <color name="grey_light_500">#cfcfcf</color>
+    <color name="grey_dark_500">#707070</color>
+    <color name="dark_grey">#494949</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
