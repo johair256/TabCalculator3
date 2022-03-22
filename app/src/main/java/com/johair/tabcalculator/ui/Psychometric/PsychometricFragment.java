@@ -95,11 +95,11 @@ public class PsychometricFragment extends Fragment {
         double wetBulbTempR = wetBulbTemp + 459.67;
 
         // Water Vapor Saturation Pressures
-        double dryBulbPws = pressureSaturated(dryBulbTempR);
+        //double dryBulbPws = pressureSaturated(dryBulbTempR);
         double wetBulbPws = pressureSaturated(wetBulbTempR);
 
         // Saturated Humidity Ratios
-        double dryBulbWs = humiditySaturated(dryBulbPws);
+        //double dryBulbWs = humiditySaturated(dryBulbPws);
         double wetBulbWs = humiditySaturated(wetBulbPws);
 
         // Specific heat at dry Bulb Temp

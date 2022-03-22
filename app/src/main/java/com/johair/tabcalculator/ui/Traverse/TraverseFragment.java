@@ -1,5 +1,6 @@
 package com.johair.tabcalculator.ui.Traverse;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -9,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -62,6 +62,7 @@ public class TraverseFragment extends Fragment {
     TableLayout printLayout;
     Spinner methodSpinner;
 
+    @SuppressLint("SetTextI18n")
     public void calcTraversePoints() {
         //Close Keyboard
         if (getActivity() != null) {
@@ -116,7 +117,7 @@ public class TraverseFragment extends Fragment {
                 TableRow.LayoutParams markingsLayoutParams = new TableRow.LayoutParams(500, 100);
                 markingsLayoutParams.setMargins(5,5,5,5);
                 newRow.addView(pitotMarkView, 0, markingsLayoutParams);
-                newRow.setGravity(Gravity.START | Gravity.CENTER);
+                newRow.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER);
 
                 // Data output
                 TextView measurementView = new TextView(getActivity());
@@ -130,7 +131,7 @@ public class TraverseFragment extends Fragment {
                 newRow.addView(measurementView, 1, dataLayoutParams);
                 newRow.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER);
 
-                // Data output
+                // Unit output
                 TextView unitView = new TextView(getActivity());
                 unitView.setText("in");
                 unitView.setTextSize(20);
