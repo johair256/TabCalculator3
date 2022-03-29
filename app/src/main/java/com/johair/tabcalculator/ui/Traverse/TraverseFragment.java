@@ -8,21 +8,26 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.johair.tabcalculator.R;
 import com.johair.tabcalculator.Util;
 import com.johair.tabcalculator.databinding.FragmentTraverseBinding;
 
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 public class TraverseFragment extends Fragment {
 
@@ -38,10 +43,10 @@ public class TraverseFragment extends Fragment {
 
         binding.clearButton.setOnClickListener(view -> resetTraverse());
 
-        Spinner traverseMethod = binding.methodSpinner;
-        ArrayAdapter<String> ad = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, traverseMethodOptions);
-        ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        traverseMethod.setAdapter(ad);
+        AutoCompleteTextView traverseMethod = binding.traverseMethodMenu;
+        ArrayAdapter<String> traverseMethodAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, traverseMethodOptions);
+        //traverseMethodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        traverseMethod.setAdapter(traverseMethodAdapter);
 
         return binding.getRoot();
     }
@@ -58,11 +63,11 @@ public class TraverseFragment extends Fragment {
     private static final DecimalFormat df3 = new DecimalFormat("#.###");
 
     // Retrieve user input data
-    EditText inputMeasurement;
+    TextInputEditText inputMeasurement;
     TableLayout printLayout;
-    Spinner methodSpinner;
+    AutoCompleteTextView traverseMenu;
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n"})
     public void calcTraversePoints() {
         //Close Keyboard
         if (getActivity() != null) {
@@ -72,7 +77,7 @@ public class TraverseFragment extends Fragment {
         // Attempts to retrieve value from user input; if there is no value entered, defaults to 0
         inputMeasurement = binding.inputMeasurement;
         printLayout = binding.printLayout;
-        methodSpinner = binding.methodSpinner;
+        traverseMenu = binding.traverseMethodMenu;
 
         try {
             measurement = Double.parseDouble(inputMeasurement.getText().toString());
@@ -81,7 +86,12 @@ public class TraverseFragment extends Fragment {
             measurement = 0;
         }
 
-        switch (methodSpinner.getSelectedItemPosition()) {
+        // Unselect view
+        inputMeasurement.setSelected(false);
+
+        Toast.makeText(getActivity(),df3.format(traverseMenu.getListSelection()+1),Toast.LENGTH_LONG).show();
+
+        switch (traverseMenu.getListSelection()+1) {
             case 0:
                 displayArray = rectTrav.rectTravPoints(measurement);
                 break;
