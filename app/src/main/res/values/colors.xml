@@ -6,7 +6,8 @@
     <color name="grey_500">#9e9e9e</color>
     <color name="grey_light_500">#cfcfcf</color>
     <color name="grey_dark_500">#707070</color>
-    <color name="dark_grey">#494949</color>
+    <color name="dark_grey_700">#373737</color>
+    <color name="dark_grey_600">#494949</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

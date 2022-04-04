@@ -8,31 +8,29 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.johair.tabcalculator.R;
 import com.johair.tabcalculator.Util;
 import com.johair.tabcalculator.databinding.FragmentTraverseBinding;
 
 import java.text.DecimalFormat;
-import java.util.Objects;
+
 
 public class TraverseFragment extends Fragment {
 
     private FragmentTraverseBinding binding;
     String[] traverseMethodOptions = {"Rectangle","Round","Logarithmic"};
+    AutoCompleteTextView traverseMethod;
+    int position;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -43,10 +41,12 @@ public class TraverseFragment extends Fragment {
 
         binding.clearButton.setOnClickListener(view -> resetTraverse());
 
-        AutoCompleteTextView traverseMethod = binding.traverseMethodMenu;
-        ArrayAdapter<String> traverseMethodAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, traverseMethodOptions);
+        traverseMethod = binding.traverseMethodMenu;
+        ArrayAdapter<String> traverseMethodAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, traverseMethodOptions);
         //traverseMethodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         traverseMethod.setAdapter(traverseMethodAdapter);
+
+        traverseMethod.setOnItemClickListener((adapterView, view, i, l) -> position = i);
 
         return binding.getRoot();
     }
@@ -65,7 +65,7 @@ public class TraverseFragment extends Fragment {
     // Retrieve user input data
     TextInputEditText inputMeasurement;
     TableLayout printLayout;
-    AutoCompleteTextView traverseMenu;
+    Button clearButton;
 
     @SuppressLint({"SetTextI18n"})
     public void calcTraversePoints() {
@@ -77,7 +77,6 @@ public class TraverseFragment extends Fragment {
         // Attempts to retrieve value from user input; if there is no value entered, defaults to 0
         inputMeasurement = binding.inputMeasurement;
         printLayout = binding.printLayout;
-        traverseMenu = binding.traverseMethodMenu;
 
         try {
             measurement = Double.parseDouble(inputMeasurement.getText().toString());
@@ -86,12 +85,7 @@ public class TraverseFragment extends Fragment {
             measurement = 0;
         }
 
-        // Unselect view
-        inputMeasurement.setSelected(false);
-
-        Toast.makeText(getActivity(),df3.format(traverseMenu.getListSelection()+1),Toast.LENGTH_LONG).show();
-
-        switch (traverseMenu.getListSelection()+1) {
+        switch (position) {
             case 0:
                 displayArray = rectTrav.rectTravPoints(measurement);
                 break;
@@ -107,7 +101,7 @@ public class TraverseFragment extends Fragment {
         printLayout.removeAllViews();
 
         // Display traverse points
-        if (measurement > 0) {   // Prevents function from outputting zeros
+        if (measurement > 0) { // Prevents function from outputting zeros
             for (int i = 0;i <= displayArray.length - 1;i++) {
                 // Create Round Corner Output Box
                 GradientDrawable roundCornersShape = new GradientDrawable();
@@ -127,7 +121,7 @@ public class TraverseFragment extends Fragment {
                 TableRow.LayoutParams markingsLayoutParams = new TableRow.LayoutParams(500, 100);
                 markingsLayoutParams.setMargins(5,5,5,5);
                 newRow.addView(pitotMarkView, 0, markingsLayoutParams);
-                newRow.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER);
+                newRow.setGravity(Gravity.CENTER_HORIZONTAL);
 
                 // Data output
                 TextView measurementView = new TextView(getActivity());
@@ -139,7 +133,7 @@ public class TraverseFragment extends Fragment {
                 TableRow.LayoutParams dataLayoutParams = new TableRow.LayoutParams(250, 100);
                 dataLayoutParams.setMargins(5,5,5,5);
                 newRow.addView(measurementView, 1, dataLayoutParams);
-                newRow.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER);
+                newRow.setGravity(Gravity.CENTER_HORIZONTAL);
 
                 // Unit output
                 TextView unitView = new TextView(getActivity());
@@ -151,10 +145,14 @@ public class TraverseFragment extends Fragment {
                 TableRow.LayoutParams unitLayoutParams = new TableRow.LayoutParams(100, 100);
                 unitLayoutParams.setMargins(5,5,5,5);
                 newRow.addView(unitView, 2, unitLayoutParams);
-                newRow.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER);
+                newRow.setGravity(Gravity.CENTER_HORIZONTAL);
 
                 // Add row to table
                 printLayout.addView(newRow);
+
+                // Show Clear button
+                clearButton = binding.clearButton;
+                clearButton.setVisibility(View.VISIBLE);
             }
         }
     }
@@ -169,6 +167,8 @@ public class TraverseFragment extends Fragment {
             // Clears all views
             inputMeasurement.getText().clear();
             printLayout.removeAllViews();
+            traverseMethod.clearListSelection();
+            clearButton.setVisibility(View.INVISIBLE);
         }
     }
 }

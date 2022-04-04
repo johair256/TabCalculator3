@@ -9,6 +9,8 @@
     <string name="hint_dry_bulb">Dry Bulb</string>
     <string name="hint_wet_bulb">Wet Bulb</string>
     <string name="hint_duct_size">Duct Size</string>
+    <string name="hint_rectangle">Rectangle</string>
+    <string name="hint_traverse_method">Traverse Method</string>
 
     <string-array name="traverse_methods">
         <item>Rectangle</item>

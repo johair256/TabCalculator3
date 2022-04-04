@@ -6,11 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.johair.tabcalculator.Util;
 import com.johair.tabcalculator.databinding.FragmentPsychometricBinding;
@@ -69,7 +67,7 @@ public class PsychometricFragment extends Fragment {
             altitude = Double.parseDouble(inputAltitude.getText().toString());
         }
         catch (NumberFormatException ex) {
-            altitude = 0;
+            altitude = 525; // Altitude at UT Austin
         }
 
         // Dry Bulb Temp in F
@@ -91,7 +89,7 @@ public class PsychometricFragment extends Fragment {
         }
 
         // Temps in Rankine
-        double dryBulbTempR = dryBulbTemp + 459.67;
+        //double dryBulbTempR = dryBulbTemp + 459.67;
         double wetBulbTempR = wetBulbTemp + 459.67;
 
         // Water Vapor Saturation Pressures
